@@ -461,6 +461,12 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     PHAsset *asset = self.fetchResult[indexPath.item];
     CGSize itemSize = [(UICollectionViewFlowLayout *)collectionView.collectionViewLayout itemSize];
     CGSize targetSize = CGSizeScale(itemSize, [[UIScreen mainScreen] scale]);
+    NSUInteger numberOfPhotos = [self.fetchResult countOfAssetsWithMediaType:PHAssetMediaTypeImage];
+    NSString *accessibilityLabel = [[NSString alloc]initWithFormat:@"Image %ld of %lu", (indexPath.row + 1), (unsigned long)numberOfPhotos];
+    cell.accessibilityLabel = accessibilityLabel;
+    cell.accessibilityTraits = UIAccessibilityTraitButton;
+    cell.isAccessibilityElement = YES;
+
 
     [self.imageManager requestImageForAsset:asset
                                  targetSize:targetSize
