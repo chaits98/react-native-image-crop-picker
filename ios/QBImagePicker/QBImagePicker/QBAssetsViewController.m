@@ -465,6 +465,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
     NSString *accessibilityLabel = [[NSString alloc]initWithFormat:@"Image %ld of %lu", (indexPath.row + 1), (unsigned long)numberOfPhotos];
     cell.accessibilityLabel = accessibilityLabel;
     cell.accessibilityTraits = UIAccessibilityTraitButton;
+    cell.isAccessibilityElement = YES;
 
 
     [self.imageManager requestImageForAsset:asset
